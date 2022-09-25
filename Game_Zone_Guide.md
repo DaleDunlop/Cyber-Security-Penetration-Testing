@@ -14,7 +14,7 @@
 #11 What is the root flag? a4b945830144bdd71908d12d902adeee
 ~~~
 
-EXPORT IP=10.10.156.38
+Export IP=[YOUR_IP]
 
 # Nmap
 
@@ -42,7 +42,6 @@ Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 13.32 seconds
 zsh: segmentation fault  sudo nmap -sC -sV -oN nmap/initial 10.10.156.38 -Pn
-
 ~~~
 
 # Gobuster
@@ -106,7 +105,6 @@ nikto -h http://$IP | tee nikto.log
 + End Time:           2022-09-25 12:18:00 (GMT1) (299 seconds)
 ---------------------------------------------------------------------------
 + 1 host(s) tested
-
 ~~~
 
 # SQLMap 
@@ -149,7 +147,7 @@ for the remaining tests, do you want to include all tests for 'MySQL' extending 
 [14:12:03] [INFO] testing 'Generic inline queries'
 [14:12:03] [INFO] testing 'AND boolean-based blind - WHERE or HAVING clause (MySQL comment)'
 [14:12:06] [INFO] testing 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)'
-[14:12:07] [INFO] POST parameter 'searchitem' appears to be 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)' injectable (with --string="is")                                                                           
+[14:12:07] [INFO] POST parameter 'searchitem' appears to be 'OR boolean-based blind - WHERE or HAVING clause (MySQL comment)' injectable (with --string="is")                                                   
 [14:12:07] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (BIGINT UNSIGNED)'                                                                                                                 
 [14:12:07] [INFO] testing 'MySQL >= 5.5 OR error-based - WHERE or HAVING clause (BIGINT UNSIGNED)'
 [14:12:07] [INFO] testing 'MySQL >= 5.5 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (EXP)'
@@ -246,7 +244,6 @@ Table: users
 [14:15:51] [INFO] fetched data logged to text files under '/home/sloppy/.local/share/sqlmap/output/10.10.156.38'
 
 [*] ending @ 14:15:51 /2022-09-25/
-
 ~~~
 
 # John the Ripper cracking pasasword
@@ -302,6 +299,7 @@ agent47@gamezone:~$
 ~~~
 
 # Exposing servies with reverse SSH tunnels
+
 ~~~
 Reverse SSH port forwarding specifies that the given port on the remote server host is to be forwarded to the given host and port on the local side.
 
@@ -432,3 +430,5 @@ root
 cat /root/root.txt
 a4b945830144bdd71908d12d902adeee
 ~~~
+
+# Complete 
