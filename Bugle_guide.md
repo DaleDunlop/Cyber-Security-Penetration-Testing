@@ -267,12 +267,6 @@ No plugin match for: y
 sh-4.2# whoami
 root
 sh-4.2# 
-
-
-
-
-
-
 ~~~
 
 
