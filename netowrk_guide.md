@@ -1,8 +1,8 @@
 # Network Servies 1 + 2
 
-# SMB
+## SMB
 
-# Understanding SMB
+### Understanding SMB
 ~~~
 What is SMB?
 
@@ -21,7 +21,7 @@ What runs SMB?
 Microsoft Windows operating systems since Windows 95 have included client and server SMB protocol support. Samba, an open source server that supports the SMB protocol, was released for Unix systems.
 ~~~
 
-# Understanding SMB - Questions
+### Understanding SMB - Questions
 ~~~
 1. What does SMB stand for? Server Messaage Block
 2. What type of protocol is SMB? response-request  
@@ -29,7 +29,7 @@ Microsoft Windows operating systems since Windows 95 have included client and se
 4. What systems does Samba run on? Unix
 ~~~
 
-# Enumerating SMB
+### Enumerating SMB
 ~~~
 Enumeration
 
@@ -65,7 +65,7 @@ TAG            FUNCTION
 -a             all of the above (full basic enumeration)
 ~~~
 
-# Enumerating SMB - Questions
+### Enumerating SMB - Questions
 ~~~
 1. Conduct an nmap scan of your choosing, How many ports are open? 3
 2. What ports is SMB running on? 139/445
@@ -75,7 +75,7 @@ TAG            FUNCTION
 6. What share sticks out as something we might want to investigate?   
 ~~~
 
-# Exploiting SMB
+### Exploiting SMB
 ~~~
 Types of SMB Exploit
 
@@ -104,7 +104,7 @@ Followed by the tags:
 -p [port] : to specify the port
 ~~~
 
-# Exploiting SMB - Questions
+### Exploiting SMB - Questions
 
 ~~~
 1. What would be the correct syntax to access an SMB share called "secret" as user "suit" on a machine with the IP 10.10.10.2 on the default port?  smbclient //10.10.10.2/secret -U suit
@@ -116,9 +116,9 @@ Followed by the tags:
 7. What is the smb.txt flag? THM{smb_is_fun_eh?}
 ~~~
 
-# Telnet
+## Telnet
 
-# Understanding Telnet
+### Understanding Telnet
 ~~~
 What is Telnet?
 
@@ -135,7 +135,7 @@ How does Telnet work?
 The user connects to the server by using the Telnet protocol, which means entering "telnet" into a command prompt. The user then executes commands on the server by using specific Telnet commands in the Telnet prompt. You can connect to a telnet server with the following syntax: "telnet [ip] [port]"
 ~~~
 
-# Understanding Telnet - Questions
+### Understanding Telnet - Questions
 ~~~
 1. What is Telnet ? Application protocol
 2. What has slowly replaced Telnet? ssh  
@@ -143,7 +143,7 @@ The user connects to the server by using the Telnet protocol, which means enteri
 4. The lack of what, means that all Telnet communication is in plaintext? encryption
 ~~~
 
-# Enumerating Telnet
+### Enumerating Telnet
 ~~~
 Enumeration
 
@@ -154,7 +154,7 @@ Port Scanning
 Let's start out the same way we usually do, a port scan, to find out as much information as we can about the services, applications, structure and operating system of the target machine. Scan the machine with nmap.
 ~~~
 
-# Enumerating Telnet - Questions
+### Enumerating Telnet - Questions
 ~~~
 1. How many ports are open on the target machine? 1
 2. What port is this? 8012
@@ -165,7 +165,7 @@ Let's start out the same way we usually do, a port scan, to find out as much inf
 ~~~
 
 
-# Exploiting Telnet
+### Exploiting Telnet
 ~~~
 Types of Telnet Exploit
 
@@ -221,7 +221,7 @@ This starts a tcpdump listener, specifically listening for ICMP traffic, which p
 ping [local ip] -c 1
 ~~~
 
-# Exploiting Telnet - Questions
+### Exploiting Telnet - Questions
 ~~~
 1. What welcome message do we receive? SKIDY'S BACKDOOR.
 2. Let's try executing some commands, do we get a return on any input we enter into the telnet session? (Y/N) n
@@ -231,9 +231,9 @@ ping [local ip] -c 1
 6. Success! What is the contents of flag.txt? 4444
 ~~~
 
-# FTP
+## FTP
 
-# Understanding FTP
+### Understanding FTP
 ~~~
 What is FTP?
 
