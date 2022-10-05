@@ -135,7 +135,7 @@ How does Telnet work?
 The user connects to the server by using the Telnet protocol, which means entering "telnet" into a command prompt. The user then executes commands on the server by using specific Telnet commands in the Telnet prompt. You can connect to a telnet server with the following syntax: "telnet [ip] [port]"
 ~~~
 
-### Understanding Telnet - Questions
+## Understanding Telnet - Questions
 ~~~
 1. What is Telnet ? Application protocol
 2. What has slowly replaced Telnet? ssh  
@@ -143,7 +143,7 @@ The user connects to the server by using the Telnet protocol, which means enteri
 4. The lack of what, means that all Telnet communication is in plaintext? encryption
 ~~~
 
-### Enumerating Telnet
+## Enumerating Telnet
 ~~~
 Enumeration
 
@@ -154,7 +154,7 @@ Port Scanning
 Let's start out the same way we usually do, a port scan, to find out as much information as we can about the services, applications, structure and operating system of the target machine. Scan the machine with nmap.
 ~~~
 
-### Enumerating Telnet - Questions
+## Enumerating Telnet - Questions
 ~~~
 1. How many ports are open on the target machine? 1
 2. What port is this? 8012
@@ -165,7 +165,7 @@ Let's start out the same way we usually do, a port scan, to find out as much inf
 ~~~
 
 
-### Exploiting Telnet
+## Exploiting Telnet
 ~~~
 Types of Telnet Exploit
 
@@ -259,14 +259,14 @@ In a Passive FTP connection, the server opens a port and listens (passively) and
 This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish. If both channels were interlinked, you could only enter commands in between data transfers, which wouldn't be efficient for either large file transfers, or slow internet connections.
 ~~~
 
-# Undestnading FTP - Questions
+### Undestnading FTP - Questions
 ~~~
 1. What communications model does FTP use? client-server
 2. What's the standard FTP port? 21
 3. How many modes of FTP connection are there? 2
 ~~~
 
-# Enumerating FTP
+### Enumerating FTP
 
 ~~~
 Lets Get Started
@@ -290,7 +290,7 @@ It's worth noting  that some vulnerable versions of in.ftpd and some other FTP s
 This vulnerability is documented at: https://www.exploit-db.com/exploits/20745 
 ~~~
 
-# Enumerating FTP - Questions
+### Enumerating FTP - Questions
 ~~~
 1. How many ports are open on the target machine? 2
 2. What port is ftp running on? 21
@@ -300,7 +300,7 @@ This vulnerability is documented at: https://www.exploit-db.com/exploits/20745
 could be? Mike
 ~~~
 
-# Exploting FTP
+### Exploting FTP
 ~~~
 Types of FTP Exploit
 
@@ -347,15 +347,15 @@ ftp / protocol          Sets the protocol
 Let's crack some passwords!
 ~~~
 
-# Exploiting FTP - Questions
+### Exploiting FTP - Questions
 ~~~
 1. What is the password for the user "mike"? password
 2. What is ftp.txt? 
 ~~~
 
-# Network File System (NFS)
+## Network File System (NFS)
 
-# Understanding NFS
+### Understanding NFS
 ~~~
 What is NFS?
 
@@ -386,7 +386,7 @@ Using the NFS protocol, you can transfer files between computers running Windows
 A computer running Windows Server can act as an NFS file server for other non-Windows client computers. Likewise, NFS allows a Windows-based computer running Windows Server to access files stored on a non-Windows NFS server.
 ~~~
 
-# Understanding NFS - Questions
+### Understanding NFS - Questions
 ~~~
 1. What does NFS stand for? network file system
 2. What process allows an NFS client to interact with a remote directory as though it was a physical device? mounting
@@ -398,7 +398,7 @@ A computer running Windows Server can act as an NFS file server for other non-Wi
 8. What is the latest version of NFS? [released in 2016, but is still up to date as of 2020] This will require external research.
 ~~~
 
-# Enumerating NFS 
+### Enumerating NFS 
 ~~~
 What is Enumeration?
 
@@ -437,7 +437,7 @@ IP:share    The IP Address of the NFS server, and the name of the share we wish 
 -nolock Specifies not to use NLM locking
 ~~~
 
-# Enumerating NFS - Questions
+### Enumerating NFS - Questions
 ~~~
 1. How many ports are open? 7
 2. Which port contains the service we're looking to enumerate? 2049
@@ -448,7 +448,7 @@ IP:share    The IP Address of the NFS server, and the name of the share we wish 
 7. Can we log into the machine using ssh -i <key-file> <username>@<ip> ? (Y/N) y
 ~~~
 
-# Exploiting NFS
+### Exploiting NFS
 ~~~
 We're done, right?
 
@@ -489,16 +489,16 @@ If this is still hard to follow, here's a step by step of the actions we're taki
                             ROOT ACCESS
 ~~~
 
-# Exploting NFS - Questions
+### Exploting NFS - Questions
 ~~~
 1. What letter do we use to set the SUID bit set using chmod? s
 2. What does the permission set look like? Make sure that it ends with -sr-x. -rwsr-sr-x
 3. Great! If all's gone well you should have a shell as root! What's the root flag? THM{nfs_got_pwned}
 ~~~
 
-# SMTP
+## SMTP
 
-# Understaanding SMTP
+### Understaanding SMTP
 ~~~
 What is SMTP?
 
@@ -540,7 +540,7 @@ What runs SMTP?
 SMTP Server software is readily available on Windows server platforms, with many other variants of SMTP being available to run on Linux.
 ~~~
 
-# Understanding SMTP - Questions
+### Understanding SMTP - Questions
 ~~~
 1. What does SMTP stand for? simple mail transfer protocol
 2. What does SMTP handle the sending of? emails
@@ -552,7 +552,7 @@ SMTP Server software is readily available on Windows server platforms, with many
 8. Can a Windows machine run an SMTP server? (Y/N) y
 ~~~
 
-# Enumerating SMTP
+### Enumerating SMTP
 ~~~
 Enumerating Server Details
 
@@ -574,7 +574,7 @@ It's worth noting that this enumeration technique will work for the majority of 
 This technique could be adapted in future to work against other vulnerable SMTP daemons, but this hasn’t been done as of the time of writing. It's an alternative that's worth keeping in mind if you're trying to distance yourself from using Metasploit e.g. in preparation for OSCP.
 ~~~
 
-# Enumerating SMTP - Questions
+### Enumerating SMTP - Questions
 ~~~
 1. What port is SMTP running on? 25
 2. What command do we use to do this? msfconsole
@@ -589,7 +589,7 @@ This technique could be adapted in future to work against other vulnerable SMTP 
 11.What username is returned? administrator
 ~~~
 
-# Exploiting SMTP
+### Exploiting SMTP
 ~~~
 What do we know?
 
@@ -626,20 +626,142 @@ hydra       Runs the hydra tool
 ssh / protocol  Sets the protocol
 ~~~
 
-# Exploting SMTP - Questions
+### Exploting SMTP - Questions
 ~~~
 1. What is the password of the user we found during our enumeration stage? alejandro
 2. WHat is contents of smtp.txt THM{who_knew_email_servers_were_c00l?}
 ~~~
 
-# MySQL
+## MySQL
 
-# Understanding MySQL
+### Understanding MySQL
+~~~
+What is MySQL?
+
+In its simplest definition, MySQL is a relational database management system (RDBMS) based on Structured Query Language (SQL). Too many acronyms? Let's break it down:
+
+Database:
+
+A database is simply a persistent, organised collection of structured data
+
+RDBMS:
+
+A software or service used to create and manage databases based on a relational model. The word "relational" just means that the data stored in the dataset is organised as tables. Every table relates in some way to each other's "primary key" or other "key" factors.
+
+SQL:
+
+MYSQL is just a brand name for one of the most popular RDBMS software implementations. As we know, it uses a client-server model. But how do the client and server communicate? They use a language, specifically the Structured Query Language (SQL).
+
+Many other products, such as PostgreSQL and Microsoft SQL server, have the word SQL in them. This similarly signifies that this is a product utilising the Structured Query Language syntax.
+
+How does MySQL work?
+
+MySQL, as an RDBMS, is made up of the server and utility programs that help in the administration of MySQL databases.
+
+The server handles all database instructions like creating, editing, and accessing data. It takes and manages these requests and communicates using the MySQL protocol. This whole process can be broken down into these stages:
+
+MySQL creates a database for storing and manipulating data, defining the relationship of each table.
+Clients make requests by making specific statements in SQL.
+The server will respond to the client with whatever information has been requested.
+What runs MySQL?
+
+MySQL can run on various platforms, whether it's Linux or windows. It is commonly used as a back end database for many prominent websites and forms an essential component of the LAMP stack, which includes: Linux, Apache, MySQL, and PHP.
+
+More Information:
+
+Here are some resources that explain the technical implementation, and working of, MySQL in more detail than I have covered here:
+
+https://dev.mysql.com/doc/dev/mysql-server/latest/PAGE_SQL_EXECUTION.html 
+
+https://www.w3schools.com/php/php_mysql_intro.asp
 ~~~
 
+### Understanding MySQL - Questions
+~~~
+1. What type of software is MySQL? relational database management system
+2. What language is MySQL based on? SQL
+3. What communication model does MySQL use? 
+4. What is a common application of MySQL?
+5. What major social network uses MySQL as their back-end database?
 ~~~
 
-# Understanding MySQL - Questions
+### Enumerating MySQL
+~~~
+When you would begin attacking MySQL
+
+MySQL is likely not going to be the first point of call when getting initial information about the server. You can, as we have in previous tasks, attempt to brute-force default account passwords if you really don't have any other information; however, in most CTF scenarios, this is unlikely to be the avenue you're meant to pursue.
+
+The Scenario
+
+Typically, you will have gained some initial credentials from enumerating other services that you can then use to enumerate and exploit the MySQL service. As this room focuses on exploiting and enumerating the network service, for the sake of the scenario, we're going to assume that you found the credentials: "root:password" while enumerating subdomains of a web server. After trying the login against SSH unsuccessfully, you decide to try it against MySQL.
+
+Requirements
+
+You will want to have MySQL installed on your system to connect to the remote MySQL server. In case this isn't already installed, you can install it using sudo apt install default-mysql-client. Don't worry- this won't install the server package on your system- just the client.
+
+Again, we're going to be using Metasploit for this; it's important that you have Metasploit installed, as it is by default on both Kali Linux and Parrot OS.
+
+Alternatives
+
+As with the previous task, it's worth noting that everything we will be doing using Metasploit can also be done either manually or with a set of non-Metasploit tools such as nmap's mysql-enum script: https://nmap.org/nsedoc/scripts/mysql-enum.html or https://www.exploit-db.com/exploits/23081. I recommend that after you complete this room, you go back and attempt it manually to make sure you understand the process that is being used to display the information you acquire.
 ~~~
 
+### Enumerating MySQL - Questions
+~~~
+1. What port is MySQL using? 3306
+2. What three options do we need to set? password/RHOSTS/USERNAME
+3. By default it will test with the "select version()" command, what result does this give you? 5.7.29-0ubuntu0.18.04.1
+4. Change the "sql" option to "show databases". how many databases are returned? 4
+~~~
+
+### Exploting MySQL
+~~~
+What do we know?
+
+Let's take a sanity check before moving on to try and exploit the database fully, and gain more sensitive information than just database names. We know:
+
+1. MySQL server credentials
+
+2. The version of MySQL running
+
+3. The number of Databases, and their names.
+
+Key Terminology
+
+In order to understand the exploits we're going to use next- we need to understand a few key terms.
+
+Schema:
+
+In MySQL, physically, a schema is synonymous with a database. You can substitute the keyword "SCHEMA" instead of DATABASE in MySQL SQL syntax, for example using CREATE SCHEMA instead of CREATE DATABASE. It's important to understand this relationship because some other database products draw a distinction. For example, in the Oracle Database product, a schema represents only a part of a database: the tables and other objects owned by a single user.
+
+Hashes:
+
+Hashes are, very simply, the product of a cryptographic algorithm to turn a variable length input into a fixed length output.
+
+In MySQL hashes can be used in different ways, for instance to index data into a hash table. Each hash has a unique ID that serves as a pointer to the original data. This creates an index that is significantly smaller than the original data, allowing the values to be searched and accessed more efficiently
+
+However, the data we're going to be extracting are password hashes which are simply a way of storing passwords not in plaintext format.
+
+Lets get cracking.
+~~~
+
+### Exploting MySQL - Questions
+~~~
+1. What's the module's full name? auxiliary/scanner/mysql/mysql_schemadump  
+2. What's the name of the last table that gets dumped? x$waits_global_by_latency
+3. What's the module's full name?
+4. What non-default user stands out to you? carl
+5. What is the user/hash combination string? carl:*EA031893AA21444B170FC2162A56978B8CEECE18
+6. Use John the Ripper against it using: "john hash.txt" what is the password of the user we found? doogie
+7. What's the contents of MySQL.txt THM{congratulations_you_got_the_mySQL_flag}
+~~~
+
+### Futher Reading
+~~~
+Here's some things that might be useful to read after completing this room, if it interests you:
+
+ https://web.mit.edu/rhel-doc/4/RH-DOCS/rhel-sg-en-4/ch-exploits.html
+ https://www.nextgov.com/cybersecurity/2019/10/nsa-warns-vulnerabilities-multiple-vpn-services/160456/
+
+Thank you
 ~~~
