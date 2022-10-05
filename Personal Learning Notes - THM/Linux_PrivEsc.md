@@ -217,7 +217,7 @@ Set up a netcat listener on your Kali box on port 4444 and wait for the cron job
 nc -nvlp 4444
 ~~~
 
-# Cron Jobs - PATH Enviroment Variable
+## Cron Jobs - PATH Enviroment Variable
 ~~~
 View the contents of the system-wide crontab:
 
