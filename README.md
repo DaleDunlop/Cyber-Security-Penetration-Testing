@@ -1,6 +1,7 @@
-# Try Hack me (THM)
+# Cyber Security - Penetration Testing
+
 ~~~
-Try Hack Me challenges
+My Personal Notes / Journey into Cyber Secruity, Mainly using www.tryhackme.com and www.hackthebox.com.
 ~~~
 
 Notes and enumeration on Try Hack me Boxes, hints and tips found within each readme.
