@@ -5,6 +5,8 @@
 Immunity Debugger
 =================
 
+    Open with - xfreerdp /u:admin /p:password /cert:ignore /v:10.10.70.232 /workarea
+
 Fuzzing
 =======
 
