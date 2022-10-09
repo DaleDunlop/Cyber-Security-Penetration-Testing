@@ -44,8 +44,8 @@ The following Python script can be modified and used to fuzz remote entry points
 
     import socket, time, sys
 
-    ip = "10.0.0.1"
-    port = 21
+    ip = "10.10.70.232"
+    port = 1337
     timeout = 5
 
     # Create an array of increasing length buffer strings.
