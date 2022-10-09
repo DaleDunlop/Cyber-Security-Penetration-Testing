@@ -5,36 +5,6 @@
 Immunity Debugger
 =================
 
-**Always run Immunity Debugger as Administrator if you can.**
-
-There are generally two ways to use Immunity Debugger to debug an application:
-
-1. Make sure the application is running, open Immunity Debugger, and then use :code:`File -> Attach` to attack the debugger to the running process.
-2. Open Immunity Debugger, and then use :code:`File -> Open` to run the application.
-
-When attaching to an application or opening an application in Immunity Debugger, the application will be paused. Click the "Run" button or press F9.
-
-Note: If the binary you are debugging is a Windows service, you may need to restart the application via :code:`sc`
-
-    sc stop SLmail
-    sc start SLmail
-
-Some applications are configured to be started from the service manager and will not work unless started by service control.
-
-Mona Setup
-==========
-
-Mona is a powerful plugin for Immunity Debugger that makes exploiting buffer overflows much easier. Download: :download:`mona.py <../_static/files/mona.py>`
-
-| The latest version can be downloaded here: https://github.com/corelan/mona
-| The manual can be found here: https://www.corelan.be/index.php/2011/07/14/mona-py-the-manual/
-
-Copy the mona.py file into the PyCommands directory of Immunity Debugger (usually located at C:\\Program Files\\Immunity Inc\\Immunity Debugger\\PyCommands).
-
-In Immunity Debugger, type the following to set a working directory for mona.
-
-    !mona config -set workingfolder c:\mona\%p
-
 Fuzzing
 =======
 
@@ -106,7 +76,6 @@ Using the buffer length which caused the crash, generate a unique buffer so we c
     $ /usr/share/metasploit-framework/tools/exploit/pattern_create.rb -l 600
     Aa0Aa1Aa2Aa3Aa4Aa5Aa6Aa7Aa8Aa9Ab0Ab1Ab2Ab3Ab4Ab5Ab6Ab7Ab8Ab9Ac0Ac1Ac2Ac3Ac4Ac5Ac6Ac7Ac8Ac9Ad0Ad1Ad2Ad3Ad4Ad5Ad6Ad7Ad8Ad9Ae0Ae1Ae2Ae3Ae4Ae5Ae6Ae7Ae8Ae9Af0Af1Af2Af3Af4Af5Af6Af7Af8Af9Ag0Ag1Ag2Ag3Ag4Ag5Ag
 
-
 On Windows, in Immunity Debugger, re-open the oscp.exe again using the same method as before, and click the red play icon to get it running. You will have to do this prior to each time we run the exploit.py (which we will run multiple times with incremental modifications).
 
 While the unique buffer is on the stack, use mona's findmsp command, with the distance argument set to the pattern length.
@@ -118,7 +87,6 @@ While the unique buffer is on the stack, use mona's findmsp command, with the di
     Cyclic pattern (normal) found at 0x005f4a40 (length 600 bytes)
     Cyclic pattern (normal) found at 0x017df764 (length 600 bytes)
     EIP contains normal pattern : 0x78413778 (offset 1978)
-
 
 Note the EIP offset (1978)
 
