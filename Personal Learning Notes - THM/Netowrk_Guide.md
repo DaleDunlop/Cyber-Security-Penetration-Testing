@@ -259,7 +259,7 @@ In a Passive FTP connection, the server opens a port and listens (passively) and
 This separation of command information and data into separate channels is a way of being able to send commands to the server without having to wait for the current data transfer to finish. If both channels were interlinked, you could only enter commands in between data transfers, which wouldn't be efficient for either large file transfers, or slow internet connections.
 ~~~
 
-### Undestnading FTP - Questions
+### Understnading FTP - Questions
 ~~~
 1. What communications model does FTP use? client-server
 2. What's the standard FTP port? 21
