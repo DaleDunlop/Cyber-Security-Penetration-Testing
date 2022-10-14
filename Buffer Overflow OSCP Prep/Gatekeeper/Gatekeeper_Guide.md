@@ -1,4 +1,4 @@
-Gatekeepr
+Gatekeeper
 =========
 
 This is a CTF on https://tryhackme.com
