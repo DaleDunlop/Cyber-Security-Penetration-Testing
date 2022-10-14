@@ -61,7 +61,7 @@ TAG            FUNCTION
 -S             get sharelist
 -P             get password policy information
 -G             get group and member list
-
+-L             IP Address
 -a             all of the above (full basic enumeration)
 ~~~
 
