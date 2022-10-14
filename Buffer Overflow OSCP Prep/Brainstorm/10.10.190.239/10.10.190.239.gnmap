@@ -1,4 +1,0 @@
-# Nmap 7.92 scan initiated Mon Oct 10 23:16:58 2022 as: nmap -p21,3389,9999 -sV -sC -T4 -Pn -oA 10.10.190.239 10.10.190.239
-Host: 10.10.190.239 ()	Status: Up
-Host: 10.10.190.239 ()	Ports: 21/open/tcp//ftp//Microsoft ftpd/, 3389/open/tcp//ssl|ms-wbt-server?///, 9999/open/tcp//abyss?///
-# Nmap done at Mon Oct 10 23:20:09 2022 -- 1 IP address (1 host up) scanned in 190.50 seconds
