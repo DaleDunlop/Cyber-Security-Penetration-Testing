@@ -423,7 +423,7 @@ With the correct prefix, offset, return address, padding, and payload set, you c
     nc - lvnp 4444
     listening on [any] 4444 ...
 
-Restart chatserver.exe in Immunity and run the modified exploit.py script again. Your netcat listener should catch a reverse shell!
+Restart gatekeeper.exe in Immunity and run the modified exploit.py script again. Your netcat listener should catch a reverse shell!
 
     sudo nc -lvnp 4444      
     [sudo] password for sloppy: 
