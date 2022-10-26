@@ -1,4 +1,4 @@
-# WHat is Active Directory?
+# What is Active Directory?
 
 ~~~
 Active Directory is a collection of machines and servers connected inside of domains, that are a collective part of a bigger forest of domains, that make up the Active Directory network. Active Directory contains many functioning bits and pieces,
