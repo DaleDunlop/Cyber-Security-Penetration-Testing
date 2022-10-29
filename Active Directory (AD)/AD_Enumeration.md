@@ -94,7 +94,7 @@ use remmina to connect RDP with creds
 remmina
 ~~~
 
-# Microsfot Management Console
+# Microsoft Management Console
 ~~~
 In this task, we will explore our first enumeration method, which is the only method that makes use of a GUI until the very last task. We will be using the Microsoft Management Console (MMC) with the Remote Server Administration Tools' (RSAT) AD Snap-Ins. If you use the provided Windows VM (THMJMP1), it has already been installed for you. However, if you are using your own Windows machine, you can perform the following steps to install the Snap-Ins:
 ~~~
