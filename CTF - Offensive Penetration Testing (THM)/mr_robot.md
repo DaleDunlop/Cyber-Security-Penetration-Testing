@@ -229,7 +229,7 @@ OK we have the login now lets go see the what we have
 ~~~
 Used reverse shell php in themes editor 404.php
 
-loaded if with /wp-content/themes/twentyfifteen/404.php
+loaded page /wp-content/themes/twentyfifteen/404.php to get shell
 ~~~
 
 ### Got shell
@@ -298,8 +298,11 @@ we find
 /usr/local/bin/nmap
 
 we can GTFO bins to see if we have a exploit
+~~~
 
+# Priv Esc (root)
 
+~~~
 robot@linux:~$ nmap --interactive
 nmap --interactive
 
@@ -320,5 +323,7 @@ now lastly to find the last flag in root
 # Conclusion
 
 ~~~
-enjoyable box although i got stuck a few times with syntax i really enjoyed it
+Enjoyable box although i got stuck a few times with syntax i really enjoyed it! 
+
+Hacked with @kubu975
 ~~~
