@@ -91,7 +91,7 @@ fi
 if [ $IP2 ]; then
     VPN="%F{green}─🮤🔒%F{yellow}$IP2%b%F{green}🮥"
 else
-    VPN="🔓%F{yellow}VPN Disconnected{green}🮥"
+    VPN="%F{green}─🮤🔓%F{yellow}VPN Disconnected%%F{green}🮥"
 fi
 
 if [ $IP3 ]; then
