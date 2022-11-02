@@ -7,7 +7,7 @@ Sudo apt full-upgrade -y
 ~~~
 # Terminal/zsh
 ~~~
-sudo apt install terminator
+Sudo apt install terminator
 Copy zshrc config
 Copy Terminator config
 ~~~
@@ -15,12 +15,12 @@ Copy Terminator config
 ~~~
 Set new wallpaper
 Set icons - candy-icons
-sudo apt install neofetch
-sudo apt install lolcat
+Sudo apt install neofetch
+Sudo apt install lolcat
 ~~~
 # Addiontal Apps
 ~~~
-sudo apt install gbpytop
+Sudo apt install gbpytop
 Install foxy proxy on firefox
 Install Wappalazyer on firefox
 ~~~
