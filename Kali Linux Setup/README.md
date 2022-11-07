@@ -20,7 +20,7 @@ Sudo apt install lolcat
 ~~~
 # Addiontal Apps
 ~~~
-Sudo apt install bpytop
+Sudo apt install htop
 Install foxy proxy on firefox
 Install Wappalazyer on firefox
 ~~~
