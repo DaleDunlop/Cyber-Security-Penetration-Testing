@@ -1,21 +1,20 @@
 [global_config]
   sticky = True
+  inactive_color_offset = 1.0
   suppress_multiple_term_dialog = True
 [keybindings]
   go_up = <Shift>Up
   go_down = <Shift>Down
-  go_left = <Shift>Left
-  go_right = <Shift>Right
   split_horiz = <Shift><Alt>x
   split_vert = <Shift><Alt>v
   close_term = <Shift><Alt>c
   move_tab_right = <Shift>KP_Subtract
   move_tab_left = <Shift>KP_Add
-  next_tab = <Shift>space
-  prev_tab = <Shift><Alt>a
+  next_tab = <Shift>Right
+  prev_tab = <Shift>Left
 [profiles]
   [[default]]
-    background_darkness = 0.85
+    background_darkness = 0.94
     background_type = transparent
     cursor_shape = ibeam
     palette = "#000000:#d41919:#1fe23c:#ff7800:#367bf0:#277fff:#2ec27e:#9a9996:#f6f5f4:#ec0101:#24ec3d:#f5c211:#f5c211:#e81cdf:#05a1f7:#ffffff"
@@ -47,14 +46,14 @@
       parent = child0
       order = 0
       labels = VPN/HTOP, NMAP/GOBUSTER, WORKING, METASPLOIT
-      last_active_term = b134566e-658c-4fa4-8726-b4d58002c44f, de995deb-f7db-4aba-b694-2d6704b48bb0, 834603da-1292-4c19-afd8-9ba00c8c5af1, af9ae476-d71b-40e8-8be4-ea97a4061bad
+      last_active_term = b134566e-658c-4fa4-8726-b4d58002c44f, 9487face-49b9-4641-a3e6-61e2b59d7ef2, 834603da-1292-4c19-afd8-9ba00c8c5af1, af9ae476-d71b-40e8-8be4-ea97a4061bad
       active_page = 0
     [[[child2]]]
       type = VPaned
       parent = child1
       order = 0
-      position = 434
-      ratio = 0.5005767012687428
+      position = 436
+      ratio = 0.5028835063437139
     [[[terminal3]]]
       type = Terminal
       parent = child2
@@ -73,8 +72,8 @@
       type = VPaned
       parent = child1
       order = 1
-      position = 434
-      ratio = 0.5005767012687428
+      position = 436
+      ratio = 0.5028835063437139
     [[[terminal6]]]
       type = Terminal
       parent = child5
