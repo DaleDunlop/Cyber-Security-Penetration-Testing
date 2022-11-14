@@ -1,7 +1,5 @@
-Certified Ethical Hacking
-=========================
-
-# What is Ethical Hacking?
+What is Ethical Hacking?
+========================
 
 Ethical hacking is a strategy of approaching a target network, system, application, or data to gain unauthorized access by using the same tactics, techniques, and procedures of malicious hackers but having explicit permission and knowledge of the owner to violate and bypass security controls.
 Ethical hacking is a subset of the larger discipline of information and cyber security, which includes,
