@@ -1,7 +1,7 @@
 # Cyber Security - Penetration Testing
 
 ~~~
-My Personal Notes / Journey into Cyber Secruity, Mainly using www.tryhackme.com and www.hackthebox.com.
-~~~
+My personal and combined notes from useful online resources into Cyber Secruity, 
 
-Notes and enumeration on Try Hack me Boxes, hints and tips found within each readme.
+Mainly using www.tryhackme.com and www.hackthebox.com.
+~~~
