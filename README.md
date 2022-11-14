@@ -1,7 +1,6 @@
-Cyber Security - Penetration Testing
+README - NOTES
 ====================================
 
-# Notes
 ~~~
 My personal notes and combined notes from useful online resources into Cyber Secruity, 
 
