@@ -14,15 +14,16 @@
   prev_tab = <Shift>Left
 [profiles]
   [[default]]
-    background_darkness = 0.94
+    background_darkness = 0.93
     background_type = transparent
     cursor_shape = ibeam
-    palette = "#000000:#d41919:#1fe23c:#ff7800:#367bf0:#277fff:#2ec27e:#9a9996:#f6f5f4:#ec0101:#24ec3d:#f5c211:#f5c211:#e81cdf:#05a1f7:#ffffff"
+    palette = "#000000:#f66151:#8ff0a4:#ffbe6f:#62a0ea:#62a0ea:#2ec27e:#9a9996:#f6f5f4:#f66151:#8ff0a4:#f8e45c:#f8e45c:#dc8add:#62a0ea:#ffffff"
     use_theme_colors = True
     bold_is_bright = True
     title_hide_sizetext = True
-    title_transmit_bg_color = "#1f7f29"
-    title_inactive_bg_color = "#c01c28"
+    title_transmit_bg_color = "#8ff0a4"
+    title_receive_bg_color = "#62a0ea"
+    title_inactive_bg_color = "#f66151"
   [[default (reset)]]
     background_darkness = 0.85
     background_type = transparent
